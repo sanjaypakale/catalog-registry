@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: payments-db
+  title: Payments Database
+  description: Primary database for payment transactions and payment lifecycle data used by the digital banking system.
+  tags:
+    - database
+    - payments
+  links:
+    - url: https://wiki.example.com/dbb/payments-db
+      title: Runbook
+      icon: docs
+spec:
+  type: database
+  owner: group:default/digital-banking-platform
+  system: dbb

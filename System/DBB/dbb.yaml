@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: dbb
+  title: Digital Banking
+  description: Core digital banking system providing retail and corporate banking capabilities including payments, accounts, cards, and lending.
+  tags:
+    - banking
+    - payments
+    - digital
+  links:
+    - url: https://wiki.example.com/digital-banking
+      title: Architecture & Runbooks
+      icon: docs
+    - url: https://dashboard.example.com/dbb
+      title: Operational Dashboard
+      icon: dashboard
+spec:
+  owner: group:default/digital-banking-platform
+  domain: dbb
+  type: platform

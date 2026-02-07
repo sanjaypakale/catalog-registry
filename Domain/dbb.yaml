@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: dbb
+  title: Digital Banking
+  description: Domain for digital banking capabilities including payments, accounts, cards, lending, and related systems.
+  tags:
+    - banking
+    - digital
+  links:
+    - url: https://wiki.example.com/domains/digital-banking
+      title: Domain Overview
+      icon: docs
+spec:
+  owner: group:default/digital-banking-platform

@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-service
+  title: Payment Service
+  description: Backend service for processing payments, transfers, and payment lifecycle operations within the digital banking platform.
+  tags:
+    - java
+    - payments
+  links:
+    - url: https://wiki.example.com/dbb/payment-service
+      title: Documentation
+      icon: docs
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-banking-platform
+  system: dbb
+  providesApis:
+    - payment-service-api
