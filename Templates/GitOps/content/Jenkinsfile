@@ -27,7 +27,7 @@ pipeline {
             echo "$REG_PASS" | docker login "$REGISTRY" -u "$REG_USER" --password-stdin
 
             docker build -t "$REGISTRY/$BACKEND_IMAGE_NAME:$IMAGE_TAG" backend
-            docker push "$REGISTRY/$BACKEND_IMAGE_NAME:$IMAGE_TAG"
+            #docker push "$REGISTRY/$BACKEND_IMAGE_NAME:$IMAGE_TAG"
           '''
         }
       }
@@ -42,7 +42,7 @@ pipeline {
             echo "$REG_PASS" | docker login "$REGISTRY" -u "$REG_USER" --password-stdin
 
             docker build -t "$REGISTRY/$FRONTEND_IMAGE_NAME:$IMAGE_TAG" frontend
-            docker push "$REGISTRY/$FRONTEND_IMAGE_NAME:$IMAGE_TAG"
+            #docker push "$REGISTRY/$FRONTEND_IMAGE_NAME:$IMAGE_TAG"
           '''
         }
       }
