@@ -4,8 +4,6 @@ pipeline {
 
   environment {
     REGISTRY             = 'docker.io'
-    DOCKERHUB_USER       = 'sanjaypakale'
-    
     BACKEND_IMAGE_NAME   = 'backend'
     FRONTEND_IMAGE_NAME  = 'frontend'
     DOCKER_CREDENTIALS_ID = 'dockerhub-creds'
