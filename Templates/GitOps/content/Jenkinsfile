@@ -3,7 +3,7 @@ pipeline {
   agent any
 
   environment {
-    REGISTRY             = 'my-registry.example.com'
+    REGISTRY             = 'docker.io'
     DOCKERHUB_USER       = 'sanjaypakale'
     
     BACKEND_IMAGE_NAME   = 'backend'
