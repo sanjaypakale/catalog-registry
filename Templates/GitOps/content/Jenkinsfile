@@ -3,10 +3,12 @@ pipeline {
   agent any
 
   environment {
-    REGISTRY             = 'my-registry.example.com'
+    REGISTRY             = 'docker.io'
+    DOCKERHUB_USER       = 'sanjaypakale'
+    
     BACKEND_IMAGE_NAME   = 'backend'
     FRONTEND_IMAGE_NAME  = 'frontend'
-    DOCKER_CREDENTIALS_ID = 'docker-registry-creds'
+    DOCKER_CREDENTIALS_ID = 'dockerhub-creds'
 
     IMAGE_TAG = "${env.BUILD_NUMBER}"
   }
@@ -27,7 +29,7 @@ pipeline {
             echo "$REG_PASS" | docker login "$REGISTRY" -u "$REG_USER" --password-stdin
 
             docker build -t "$REGISTRY/$BACKEND_IMAGE_NAME:$IMAGE_TAG" backend
-            docker push "$REGISTRY/$BACKEND_IMAGE_NAME:$IMAGE_TAG"
+            #docker push "$REGISTRY/$BACKEND_IMAGE_NAME:$IMAGE_TAG"
           '''
         }
       }
@@ -42,7 +44,7 @@ pipeline {
             echo "$REG_PASS" | docker login "$REGISTRY" -u "$REG_USER" --password-stdin
 
             docker build -t "$REGISTRY/$FRONTEND_IMAGE_NAME:$IMAGE_TAG" frontend
-            docker push "$REGISTRY/$FRONTEND_IMAGE_NAME:$IMAGE_TAG"
+            #docker push "$REGISTRY/$FRONTEND_IMAGE_NAME:$IMAGE_TAG"
           '''
         }
       }
@@ -52,10 +54,10 @@ pipeline {
       steps {
         sh '''
           # Update backend deployment image
-          sed -i "s|image:.*backend.*|image: $REGISTRY/$BACKEND_IMAGE_NAME:$IMAGE_TAG|" backend/deploy.yaml
+          sed -i '' "s|image:.*backend.*|image: docker.io/backend:$IMAGE_TAG|" backend/deploy.yaml
 
           # Update frontend deployment image
-          sed -i "s|image:.*frontend.*|image: $REGISTRY/$FRONTEND_IMAGE_NAME:$IMAGE_TAG|" frontend/deploy.yaml
+          sed -i '' "s|image:.*frontend.*|image: docker.io/frontend:$IMAGE_TAG|" frontend/deploy.yaml
         '''
       }
     }
@@ -65,18 +67,16 @@ pipeline {
         sh '''
           git config user.name "Jenkins"
           git config user.email "jenkins@example.com"
-
-          git status
-
+          
           git add backend/deploy.yaml frontend/deploy.yaml
-
-          # Commit only if there are changes
+          
           if ! git diff --cached --quiet; then
             git commit -m "chore: update images to tag $IMAGE_TAG"
-            git push origin HEAD
+            git push origin HEAD:main
           else
             echo "No manifest changes to commit."
           fi
+
         '''
       }
     }
@@ -88,4 +88,3 @@ pipeline {
     }
   }
 }
-
