@@ -6,3 +6,5 @@ spec:
   type: service
   owner: user:guest
   lifecycle: experimental
+  owner: core-banking-team
+  system: transaction-processing
