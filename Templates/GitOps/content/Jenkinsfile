@@ -69,7 +69,7 @@ pipeline {
           git add backend/deploy.yaml frontend/deploy.yaml
           
           if ! git diff --cached --quiet; then
-            git commit -m "chore: update images to tag $IMAGE_TAG"
+            git commit -m "update images to tag $IMAGE_TAG"
             git push origin HEAD:main
           else
             echo "No manifest changes to commit."
