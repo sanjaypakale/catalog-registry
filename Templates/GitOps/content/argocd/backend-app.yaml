@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/sanjaypakale/gitops1.git
+    repoURL: ${{ values.repoUrl }}
     targetRevision: main
     path: backend
 
