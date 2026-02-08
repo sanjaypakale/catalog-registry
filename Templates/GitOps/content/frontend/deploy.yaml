@@ -5,7 +5,7 @@ metadata:
   labels:
     app: frontend
 spec:
-  replicas: ${{ values.memory }}
+  replicas: ${{ values.replicaCount }}
   selector:
     matchLabels:
       app: frontend
