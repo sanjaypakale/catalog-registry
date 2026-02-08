@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: ${{ values.repoUrl }}
+    repoURL: ${{ "https://" ~ (values.repoUrl | replace("?owner=", "/") | replace("&repo=", "/")) ~ ".git" }}
     targetRevision: main
     path: frontend
 
