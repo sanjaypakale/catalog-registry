@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Domain
 metadata:
   name: dbb
-  title: Digital Banking
+  title: Core Banking
   description: Domain for digital banking capabilities including payments, accounts, cards, lending, and related systems.
   tags:
     - banking
