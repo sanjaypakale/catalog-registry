@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: transaction-processing
+  description: Handles all debit, credit, and fund transfer transactions
+spec:
+  owner: core-banking-team
+  domain: dbb
